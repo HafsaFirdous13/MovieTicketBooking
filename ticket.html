@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlex - Your Ticket</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Print Styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            .ticket-container,
+            .ticket-container * {
+                visibility: visible;
+            }
+
+            .ticket-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                border: 2px solid black;
+                color: black;
+                background: white;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body id="ticket-page">
+
+    <header class="no-print">
+        <a href="index.html" class="logo">CineFlex</a>
+    </header>
+
+    <main>
+        <div style="text-align: center; margin-bottom: 2rem;" class="no-print">
+            <h2 style="color: var(--success);">Booking Confirmed!</h2>
+            <p>Thank you for your purchase.</p>
+        </div>
+
+        <div class="ticket-container">
+            <div class="ticket-header">
+                <h1>ADMIT ONE</h1>
+                <p>CineFlex Cinemas</p>
+            </div>
+
+            <div class="ticket-info">
+                <p><strong>Booking ID:</strong> <span id="t-id"></span></p>
+                <p><strong>Movie:</strong> <span id="t-movie"></span></p>
+                <p><strong>Date & Time:</strong> <span id="t-date"></span></p>
+                <p><strong>Name:</strong> <span id="t-name"></span></p>
+                <p><strong>Seats:</strong> <span id="t-seats"></span> (<span id="t-seat-count"></span>)</p>
+                <hr style="margin: 10px 0;">
+                <p style="font-size: 1.2rem;"><strong>Total Paid:</strong> <span id="t-total"></span></p>
+            </div>
+
+            <!-- Optional QR Code logic could go here, omitting for vanilla simplicity as requested -->
+            <div style="margin-top: 20px; text-align: center;">
+                <div style="background: black; height: 50px; width: 80%; margin: 0 auto;"></div>
+                <small>Scan at entry</small>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;" class="no-print">
+            <button onclick="window.print()" class="btn">Print Ticket</button>
+            <a href="index.html" class="btn btn-secondary" style="margin-left: 10px;">Back to Home</a>
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

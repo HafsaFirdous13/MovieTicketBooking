@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+  /* Premium Dark Palette */
+  --bg-main: #0f1014;
+  /* Very dark blue-gray */
+  --bg-surface: #1b1e26;
+  /* Slightly lighter for cards */
+  --primary: #e50914;
+  /* Netflix/Cinema Red */
+  --primary-hover: #b20710;
+  --accent: #46d369;
+  /* Success Green */
+  --text-main: #ffffff;
+  --text-muted: #a3a3a3;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.6);
+  --radius: 12px;
+
+  /* Seat Colors (Restored to Vivid Colors) */
+  --seat-std: #3a3f50;
+  /* Dark Grey */
+  --seat-avail: #3a3f50;
+  --seat-sel: #e50914;
+  /* Red */
+  --seat-bkd: #555;
+  /* Booked/Disabled */
+  --seat-prm: #9b59b6;
+  /* Vivid Purple */
+  --seat-frt: #3498db;
+  /* Vivid Blue */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- HEADER --- */
+header {
+  background: rgba(15, 16, 20, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 5%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+nav a {
+  color: var(--text-main);
+  text-decoration: none;
+  margin-left: 2rem;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+/* --- HERO SECTION (Home) --- */
+.hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  background: linear-gradient(to top, var(--bg-main), transparent),
+    url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1920&auto=format&fit=crop') center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  color: #ddd;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  max-width: 600px;
+}
+
+/* --- MAIN LAYOUT --- */
+main {
+  flex: 1;
+  width: 90%;
+  max-width: 1200px;
+  /* Restored to match original comfort */
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h2.section-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid var(--primary);
+  padding-left: 1rem;
+}
+
+/* --- BUTTONS --- */
+.btn {
+  background-color: var(--primary);
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+}
+
+.btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: black;
+}
+
+/* --- MOVIE GRID (Home) --- */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.movie-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s ease;
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+}
+
+.movie-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(229, 9, 20, 0.15);
+  border-color: var(--primary);
+}
+
+.movie-card img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+
+.movie-info {
+  padding: 1.2rem;
+}
+
+.movie-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.3s;
+  padding: 1rem;
+  text-align: center;
+}
+
+.movie-card:hover .movie-overlay {
+  opacity: 1;
+  backdrop-filter: blur(4px);
+}
+
+/* --- MOVIE DETAILS (Restored Original Layout Logic) --- */
+.movie-details-container {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  background: var(--bg-surface);
+  /* Added card bg */
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+}
+
+.movie-poster-large {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+}
+
+.movie-content {
+  flex: 2;
+  min-width: 300px;
+}
+
+.showtime-group {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+/* Date/Time Chips */
+.date-selector,
+.time-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.chip {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  /* Proper glass */
+  border: 1px solid #555;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #ddd;
+}
+
+.chip:hover,
+.chip.selected {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+}
+
+/* --- SEAT MAP --- */
+.screen-container {
+  perspective: 1000px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.screen {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, transparent 100%);
+  height: 60px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 30px;
+  transform: rotateX(-45deg);
+  box-shadow: 0 20px 50px rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  opacity: 0.5;
+  /* Subtle */
+}
+
+.seat-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+
+.seat-row {
+  display: flex;
+  gap: 8px;
+  /* Slightly tighter than home grid */
+}
+
+/* Seat Classes - Restoring Solid Colors */
+.seat {
+  width: 35px;
+  height: 35px;
+  background-color: var(--seat-std);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+  /* Remove border logic from version 2 */
+  border: none;
+}
+
+.seat.premium {
+  background-color: var(--seat-prm);
+  /* Full Purple */
+}
+
+.seat.front {
+  background-color: var(--seat-frt);
+  /* Full Blue */
+}
+
+.seat.selected {
+  background-color: var(--seat-sel);
+  transform: scale(1.2);
+  box-shadow: 0 0 15px var(--seat-sel);
+  z-index: 10;
+}
+
+.seat.booked {
+  background-color: var(--seat-bkd);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.seat:not(.booked):hover {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+/* Legends */
+.legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+}
+
+.seat-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+/* --- PRICE SUMMARY --- */
+.price-summary {
+  background: var(--bg-surface);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  margin-top: 2rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  /* subtle divider */
+  padding-bottom: 5px;
+}
+
+.total-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 15px;
+  border-top: 1px solid #444;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.final-price {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(70, 211, 105, 0.4);
+}
+
+/* --- CHECKOUT FORM --- */
+#checkout-form {
+  background: var(--bg-surface);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* --- MODAL --- */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  border: 1px solid #333;
+}
+
+.credit-card {
+  background: linear-gradient(135deg, #111, #333);
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+  color: white;
+  text-align: left;
+  border: 1px solid #444;
+}
+
+/* --- TICKET PAGE --- */
+.ticket-container {
+  background: white;
+  color: black;
+  padding: 2rem;
+  border-radius: var(--radius);
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* --- UTILS --- */
+.hidden {
+  display: none !important;
+}
+
+.error-msg {
+  color: var(--primary);
+  font-size: 0.9rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .movie-details-container {
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
