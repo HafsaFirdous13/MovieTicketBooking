@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlex - Checkout</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="checkout-page">
+
+    <header>
+        <a href="index.html" class="logo">CineFlex</a>
+    </header>
+
+    <main style="max-width: 600px;">
+        <h2>Complete Your Booking</h2>
+
+        <div class="price-summary" style="margin-top: 1rem; margin-bottom: 2rem;">
+            <h3>Order Summary</h3>
+            <p><strong>Movie:</strong> <span id="summary-movie"></span></p>
+            <p><strong>Seats:</strong> <span id="summary-seats"></span></p>
+            <p class="total-price" style="border:none;">Total to Pay: <span id="summary-total"></span></p>
+        </div>
+
+        <form id="checkout-form">
+            <div class="form-group">
+                <label for="name">Full Name <span style="color:red">*</span></label>
+                <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number <span style="color:red">*</span></label>
+                <input type="tel" id="phone" class="form-control" placeholder="03001234567" required>
+                <small style="color: var(--text-muted);">Format: 9-15 digits only</small>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email (Optional)</label>
+                <input type="email" id="email" class="form-control" placeholder="john@example.com">
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <p style="margin-bottom: 10px; font-size: 0.9rem; color: var(--text-muted);">
+                    <i style="color: var(--warning);">⚠</i> This is a demo. No actual payment will be processed.
+                </p>
+                <button type="submit" class="btn" style="width: 100%;">Proceed to Payment</button>
+            </div>
+        </form>
+
+        <!-- Developer Note -->
+        <div
+            style="margin-top: 50px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px; font-size: 0.85rem; color: #aaa;">
+            <h4>👨‍💻 Developer Note: Switching to Real Payment</h4>
+            <p>To integrate valid payments (Stripe, PayPal, JazzCash, Easypaisa):</p>
+            <ol style="margin-left: 20px; margin-top: 5px;">
+                <li>Replace the button below with a server call (fetch) to create a payment session.</li>
+                <li>Do NOT handle real card info directly in HTML. Use the provider's SDK (e.g., Stripe Elements).</li>
+                <li>Upon success webhook from the server, save the booking to a real database instead of LocalStorage.
+                </li>
+            </ol>
+        </div>
+    </main>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <h3>Simulated Payment Gateway</h3>
+            <p style="color: #ccc;">Secure Payment Processing...</p>
+
+            <div class="credit-card">
+                <div style="font-size: 1.2rem; letter-spacing: 2px;">4242 4242 4242 4242</div>
+                <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                    <span>John Doe</span>
+                    <span>12/28</span>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button id="sim-fail-btn" class="btn" style="background-color: var(--error);">Simulate Failure</button>
+                <button id="sim-success-btn" class="btn" style="background-color: var(--success);">Simulate
+                    Success</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

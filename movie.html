@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlex - Movie Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="movie-page">
+
+    <header>
+        <a href="index.html" class="logo">CineFlex</a>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="movie-details-container">
+            <img id="movie-poster" class="movie-poster-large" src="" alt="Movie Poster">
+
+            <div class="movie-content">
+                <h1 id="movie-title" style="font-size: 2.5rem; margin-bottom: 1rem;"></h1>
+                <div style="display: flex; gap: 15px; margin-bottom: 1rem; color: var(--text-muted);">
+                    <span id="movie-rating"></span>
+                    <span id="movie-duration"></span>
+                </div>
+                <p id="base-price" style="font-size: 1.2rem; color: var(--success); margin-bottom: 1rem;"></p>
+                <p id="movie-desc" style="margin-bottom: 2rem;"></p>
+
+                <div id="showtime-container" class="showtime-group">
+                    <h3 style="margin-bottom: 10px;">Select Show Date & Time</h3>
+                    <!-- Dates and Times injected here -->
+                </div>
+
+                <button id="select-seats-btn" class="btn"
+                    style="margin-top: 2rem; width: 100%; max-width: 300px;">Select Seats</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
