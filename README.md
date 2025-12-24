@@ -2,11 +2,6 @@
 
 A complete, responsive, multi-page movie ticket booking application built using only HTML, CSS, and JavaScript. No frameworks or external libraries are required.
 
-## 🚀 How to Run
-1. Unzip the project folder.
-2. Open `index.html` in any modern web browser (Chrome, Firefox, Edge).
-3. That's it! The app works purely on the client-side.
-
 ## 📂 Project Structure
 * `index.html`: Home page displaying movie posters.
 * `movie.html`: Movie details and showtime selection.
@@ -51,5 +46,4 @@ Currently, the app uses a **simulated payment modal** for demonstration (`app.js
 7. View the generated ticket.
 8. Go back Home, select the same show, and verify the seats are now **red (Booked)**.
 
----
-Created by Antigravity
+
